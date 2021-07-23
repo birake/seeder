@@ -400,14 +400,12 @@ extern "C" void* ThreadStats(void*) {
   return nullptr;
 }
 
-static const string mainnet_seeds[] = {"seeder2.theabundancecoin.com", "seeder3.theabundancecoin.com",""};
+static const string mainnet_seeds[] = {"seeder1.theabundancecoin.com", "3.68.53.115",""};
 static const string testnet_seeds[] = {"testnet-seed.litecointools.com", "seed-b.litecoin.loshan.co.uk", "testnet-seed.ltc.xurious.com", "dnsseed-testnet.thrasher.io", ""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
-  if (!fTestNet){
-    db.Add(CService("seeder1.theabundancecoin.com", 38102), true);
-  }
+
   do {
     for (int i=0; seeds[i] != ""; i++) {
       vector<CNetAddr> ips;
